@@ -1,0 +1,50 @@
+
+<form [formGroup]="reactiveFormExample" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="fullName">Nombre Completo</label>
+        <input type="text" name="fullName" id="fullName" formControlName="fullName">
+    </div>
+    <div>
+        <label for="email">Correo</label>
+        <input type="email" name="email" id="email" formControlName="email">
+    </div>
+    <div>
+        <button (click)="addChild()">Agregar Hijo</button>
+    <div formArrayName="children">
+        <ng-template ngFor let-item [ngForOf]="childrenArray.controls" let-i="index">
+            <button (click)="removeChild(i)">Eliminar {{ i + 1 }}</button>
+            <div [formGroupName]="i">
+                <div>
+                    <label for="fullName">Nombre Completo</label>
+                    <input type="text" name="fullName" id="fullName" formControlName="fullName">
+                </div>
+                <div>
+                    <label for="birthDay">Fecha Nacimiento</label>
+                    <input type="date" name="birthDay" id="birthDay" formControlName="birthDay">
+                </div>
+            </div>
+        </ng-template>
+    </div>
+        <button type="submit">Click</button>
+    </div>
+</form>
+
+<div class="row">
+    <div class="col">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table">
+            <thead>
+              <tr>
+                <th>Nombre Completo</th>
+                <th>Correo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of peaple">
+                <td>{{ item.fullName }}</td>
+                <td>{{ item.email }}</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
