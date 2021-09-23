@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-6 mb-5">
+        <hr />
+        <h5 class="text-center">Completar Encuesta</h5>
+        <form [formGroup]="encuestaFrm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col" formArrayName="preguntas">
+                    <ng-template ngFor let-item [ngForOf]="preguntasFrm.controls" let-i="index">
+                        <hr />
+                        <div class="row" [formGroupName]="i">
+                            <div class="col">
+                                <h6>{{ encuestaBD.preguntas[i].descripcion }}</h6>
+                            </div>
+        
+                            <div class="form-check">
+                                <input class="form-check-input" value="1" type="radio" name="respuesta" id="respuesta" formControlName="respuesta">
+                                <label class="form-check-label" for="respuesta">
+                                    Default radio
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" value="2" type="radio" name="respuesta" id="respuesta2" formControlName="respuesta">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Default checked radio
+                                </label>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+            <hr />
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+</div>
