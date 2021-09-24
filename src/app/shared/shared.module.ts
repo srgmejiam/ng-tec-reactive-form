@@ -14,10 +14,10 @@ const sharedModules = [
 
   ],
   imports: [
-    ...sharedModules
+    ...sharedModules,
   ],
   exports: [
-    ...sharedModules
+    ...sharedModules,
   ]
 })
 export class SharedModule { }
